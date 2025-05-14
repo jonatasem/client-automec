@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { createSale } from '../../../api';
 import useClients from '../../hooks/useClients';
 import useProducts from '../../hooks/useProducts';
-import './CreateSales.scss'; // Importa o estilo
+import './index.scss'; // Importa o estilo
 
 const CreateSale = () => {
   const { clients } = useClients(); // Obtém a lista de clientes

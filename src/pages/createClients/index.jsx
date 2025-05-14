@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { createClient } from '../../../api';
 import useClients from '../../hooks/useClients';
-import './CreateClients.scss';
+import './index.scss';
 
 const CreateClient = () => {
   const { clients } = useClients(); // Hook para obter a lista de clientes

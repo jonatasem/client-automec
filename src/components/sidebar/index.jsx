@@ -1,5 +1,7 @@
 import './index.scss';
 
+import { Link } from 'react-router-dom';
+
 import {
     FaTachometerAlt,
     FaCog,
@@ -18,30 +20,42 @@ export default function Sidebar() {
             </div>
             <ul className="sidebar-main">
                 <li>
-                    <FaTachometerAlt className="icon" />
-                    Dashboard
+                    <Link to="/">
+                        <FaTachometerAlt className="icon" />
+                        Dashboard
+                    </Link>
                 </li>
                 <p>INTERFACE</p>
                 <li>
-                    < FaCog className="icon" />
-                    Components
+                    <Link to="/cadastrar-cliente">
+                        < FaCog className="icon" />
+                        Cadastrar Cliente
+                    </Link>
                 </li>
                 <li>
-                    < FaWrench className="icon" />
-                    Utilities
+                    <Link to="/criar-venda">
+                        < FaWrench className="icon" />
+                        Realizar Venda
+                    </Link>
                 </li>
                 <p>ADDONS</p>
                 <li>
-                    < FaFolder className="icon" />
-                    Pages
+                    <Link to="/cadastrar-produto">
+                        < FaFolder className="icon" />
+                        Cadastrar Produto
+                    </Link>
                 </li>
                 <li>
-                    <FaChartArea className="icon" />
-                    Charts
+                    <Link to="/clientes">
+                        <FaChartArea className="icon" />
+                        Clientes Cadastrados
+                    </Link>
                 </li>
                 <li>
-                    < FaTable className="icon" />
-                    Tables
+                    <Link to="/produtos">
+                        < FaTable className="icon" />
+                        Produtos Cadastrados
+                    </Link>
                 </li>
             </ul>
         </div>

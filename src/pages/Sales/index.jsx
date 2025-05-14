@@ -1,9 +1,8 @@
-import React from "react";
 import QRCode from "qrcode";
 import { QrCode } from "lucide-react";
 import useSales from "../../hooks/useSales";
 import useClients from "../../hooks/useClients";
-import './Sales.scss'; // Importando os estilos
+import './index.scss'; // Importando os estilos
 
 export default function Sales() {
     const { sales, loading: salesLoading, error: salesError } = useSales(); // Usa o hook de vendas
@@ -45,6 +44,9 @@ export default function Sales() {
         }
     };
 
+    // Ordenar as vendas por data (mais recente primeiro)
+    const sortedSales = sales.sort((a, b) => new Date(b.data_emissao) - new Date(a.data_emissao));
+
     return (
         <section className="container-sales">
             <h3>Vendas Realizadas</h3>
@@ -59,11 +61,11 @@ export default function Sales() {
                     </tr>
                 </thead>
                 <tbody>
-                    {sales.map(sale => {
+                    {sortedSales.map(sale => {
                         const client = clients.find(client => client.id === sale.clienteId); // Busca o cliente pelo ID
                         return (
                             <tr key={sale.id}>
-                                <td>{client ? client.nome : 'Carregando...'}</td> {/* Exibe o nome do cliente */}
+                                <td>{client ? client.nome : 'Carregando vendas...'}</td> {/* Exibe o nome do cliente */}
                                 <td>{formatDate(sale.data_emissao)}</td> {/* Formata e exibe a data */}
                                 <td className="sales-status">{sale.status}</td>
                                 <td className="sales-valor">R$ {sale.valor_total.toFixed(2)}</td>

@@ -4,7 +4,7 @@ import useSales from "../../hooks/useSales";
 import useClients from "../../hooks/useClients"; 
 import jsPDF from 'jspdf'; 
 import html2canvas from 'html2canvas'; 
-import './Invoice.scss';
+import './index.scss';
 
 const Invoice = () => {
     const { id } = useParams(); 

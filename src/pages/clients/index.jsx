@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useClients from '../../hooks/useClients';
-import './Clients.scss';
+import './index.scss';
 
 export default function Clients() {
     const { clients, loading, error } = useClients();

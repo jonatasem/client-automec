@@ -1,5 +1,5 @@
 import Header from '../../components/header';
-import SalesChart from '../Sales/SalesChart';
+import Sales from '../sales';
 import './index.scss';
 
 import { MdOutlineReportProblem } from "react-icons/md";
@@ -18,12 +18,12 @@ export default function Dashboard() {
 
       <article className="home-head">
         <div className="monthly">
-          <h3>Earning Month</h3>
-          <p>R$40,000</p>
+          <h3>Clientes Cadastrados</h3>
+          <p>40</p>
         </div>
         <div className="annual">
-          <h3>Earning Month</h3>
-          <p>R$40,000</p>
+          <h3>Vendas Realizadas</h3>
+          <p>50</p>
         </div>
         <div className="taks">
           <h3>Earning Month</h3>
@@ -37,7 +37,7 @@ export default function Dashboard() {
 
       <article className="home-main">
         <div className="graphic-sales">
-          <SalesChart />
+          <Sales />
         </div>
       </article>
     </section>

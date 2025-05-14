@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useProducts from '../../hooks/useProducts';
-import './Products.scss';
+import './index.scss';
 
 export default function Products() {
     const { products, loading, error } = useProducts();

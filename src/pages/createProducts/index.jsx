@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createProduct } from '../../../api';
-import './CreateProducts.scss'; 
+import './index.scss'; 
 
 const CreateProduct = () => {
   const [productData, setProductData] = useState({

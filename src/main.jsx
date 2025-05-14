@@ -5,16 +5,16 @@ import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Importar páginas
-import Dashboard from './pages/dashboard/index';
-import CreateSales from './pages/CreateSales/CreateSales';
-import CreateClients from './pages/CreateClients/CreateClients';
-import CreateProducts from './pages/CreateProducts/CreateProducts';
+import Dashboard from './pages/dashboard';
+import CreateSales from './pages/createSales';
+import CreateClients from './pages/createClients';
+import CreateProducts from './pages/createProducts';
 
 // Sidebar
-import Clients from './pages/Clients/Clients';
-import Products from './pages/Products/Products';
-import Sales from './pages/Sales/Sales';
-import Invoice from './components/Invoice/Invoice';
+import Clients from './pages/clients';
+import Products from './pages/products';
+import Sales from './pages/sales';
+import Invoice from './components/invoice';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
