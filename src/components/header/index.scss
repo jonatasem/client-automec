@@ -1,0 +1,21 @@
+.container-header {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+
+  .header-main {
+    display: flex;
+
+    div {
+      display: flex;
+      align-items: center;
+      margin: 0 0.5rem;
+
+      p {
+        background-color: red;
+        color: white;
+        padding: 0.2rem;
+      }
+    }
+  }
+}

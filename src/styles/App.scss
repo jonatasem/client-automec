@@ -1,0 +1,59 @@
+.container-app {
+  display: flex;
+  height: 100vh;
+}
+
+
+//geral das paginas
+.create-report,
+.create-products,
+.create-clients,
+.create-sales,
+.container-clients,
+.container-sales,
+.container-products {
+  padding: 1.5rem;
+}
+
+.container-clients h3,
+.container-sales h3,
+.container-products h3 {
+  margin-bottom: 1rem;
+} 
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px; // Espaçamento abaixo do input
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.search-input:focus {
+  border-color: #3b82f6; // Cor ao focar no input
+  outline: none; // Remove o contorno padrão
+}
+
+.loading,
+.error-loading {
+  margin: 2rem auto;
+  text-align: center;
+}
+.error-loading {
+  color: #bb0808;
+}
+
+.hidden {
+  display: none; // Oculta elementos com esta classe
+}
+
+.success-message {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  background-color: green;
+  color: white;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+}

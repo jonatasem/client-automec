@@ -1,0 +1,68 @@
+.container-home {
+  width: 100%;
+  padding: 20px;
+  background-color: #f3f3f3;
+
+  .report {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+
+     .title-home {
+      margin-bottom: 1.5rem;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      background-color: #0084ff;
+      max-width: max-content;
+      padding: 0 0.5rem;
+      border-radius: 0.5rem;
+      color: red;
+
+
+      .icon {
+        margin-right: 0.5rem;
+      }
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .home-head {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+      background-color: white;
+      padding: 2rem;
+      width: calc(100% / 4 - 1.5rem);
+      border-radius: 0.5rem;
+
+      h3 {
+        margin-bottom: 1rem;
+        font-size: 15px;
+      }
+    }
+
+    .monthly {
+      border-left: 6px solid brown;
+    }
+
+    .annual {
+      border-left: 6px solid #82d308;
+    }
+
+    .taks {
+      border-left: 6px solid #27ceb2;
+    }
+    .pendind {
+      border-left: 6px solid #ffa500;
+    }
+  }
+}

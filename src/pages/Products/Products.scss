@@ -1,0 +1,38 @@
+.container-products {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9; // Cores alternadas nas linhas
+    }
+
+    tr:hover {
+        background-color: #f1f1f1; // Efeito de hover
+    }
+}
+
+
+@media (max-width:499px) {
+    .products-table {
+        .product-descript {
+            display: none;
+        }
+    }
+}

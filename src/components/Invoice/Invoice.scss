@@ -1,0 +1,92 @@
+.container-invoice {
+
+    .layout-invoice {
+        width: 400px;
+        max-width: 90%;
+        margin: 0 auto; 
+        padding: 0.5rem; 
+        border-radius: 10px;
+        
+        .invoice-head {
+            margin: 1rem 0;
+        }
+
+        .invoice-header {
+            border-bottom: 2px solid #007bff; 
+            padding: 0.5rem 1rem;
+
+            .data-invoice {
+                margin: 0.5rem 0;
+            }
+        }
+
+        .invoice-header,
+        .invoice-products {
+            border: 1px solid silver;
+        }
+
+        .invoice-products {
+            padding: 1rem;
+            border-top: transparent;
+
+            h3 {
+                margin-bottom: 0.5rem;
+                color: #007bff; 
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+
+                th, td {
+                    border: 1px solid #ccc;
+                    padding: 0.5rem;
+                    text-align: left;
+                }
+
+                .even-row {
+                    background-color: #c0c0c04d; 
+                }
+
+                .odd-row {
+                    background-color: #ffffff; 
+                }
+            }
+        }
+
+        .invoice-footer {
+            display: flex; 
+            justify-content: space-between; 
+            padding-top: 1rem; 
+
+            button {
+                padding: 0.5rem 1rem; 
+                background-color: #007bff; 
+                color: white; 
+                border: none; 
+                border-radius: 5px; 
+                cursor: pointer; 
+                transition: background-color 0.3s; 
+
+                &:hover {
+                    background-color: #0056b3;
+                }
+            }
+        }
+
+        .thanks {
+            margin: 1rem auto;
+            text-align: center;
+            p {
+                margin: 0.2rem 0;
+            }
+        }
+    }
+
+    // CSS para ocultar o botão durante a impressão
+    @media print {
+        .invoice-footer button {
+            display: none; // Oculta o botão de download durante a impressão
+        }
+    }
+}
