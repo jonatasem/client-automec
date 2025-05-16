@@ -1,7 +1,5 @@
 import './index.scss';
-
 import { Link } from 'react-router-dom';
-
 import {
     FaTachometerAlt,
     FaCog,
@@ -9,10 +7,9 @@ import {
     FaFolder,
     FaChartArea,
     FaTable
-
 } from "react-icons/fa";
 
-export default function Sidebar() {
+export default function Sidebar({ setActiveView }) {
     return (
         <div className="container-sidebar">
             <div className="sidebar-head">
@@ -26,36 +23,18 @@ export default function Sidebar() {
                     </Link>
                 </li>
                 <p>INTERFACE</p>
-                <li>
-                    <Link to="/cadastrar-cliente">
-                        < FaCog className="icon" />
-                        Cadastrar Cliente
-                    </Link>
+                <li onClick={() => setActiveView('createClient')}>
+                    <FaCog className="icon" />
+                    Cadastrar Cliente
                 </li>
-                <li>
-                    <Link to="/criar-venda">
-                        < FaWrench className="icon" />
-                        Realizar Venda
-                    </Link>
+                <li onClick={() => setActiveView('createSale')}>
+                    <FaWrench className="icon" />
+                    Realizar Venda
                 </li>
                 <p>ADDONS</p>
-                <li>
-                    <Link to="/cadastrar-produto">
-                        < FaFolder className="icon" />
-                        Cadastrar Produto
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/clientes">
-                        <FaChartArea className="icon" />
-                        Clientes Cadastrados
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/produtos">
-                        < FaTable className="icon" />
-                        Produtos Cadastrados
-                    </Link>
+                <li onClick={() => setActiveView('createProduct')}>
+                    <FaFolder className="icon" />
+                    Cadastrar Produto
                 </li>
             </ul>
         </div>

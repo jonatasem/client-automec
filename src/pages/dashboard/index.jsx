@@ -1,23 +1,26 @@
 import React from 'react';
 import Header from '../../components/header';
 import Sales from '../sales';
-import useProducts from '../../hooks/useProducts'; // Importa o hook dos produtos
-import useSales from '../../hooks/useSales'; // Importa o hook das vendas
-import useClients from '../../hooks/useClients'; // Importa o hook dos clientes
+import useProducts from '../../hooks/useProducts';
+import useSales from '../../hooks/useSales';
+import useClients from '../../hooks/useClients';
 import './index.scss';
 import { MdOutlineReportProblem } from "react-icons/md";
+import CreateClient from '../createClients';
+import CreateProduct from '../createProducts';
+import CreateSales from '../createSales';
 
-export default function Dashboard() {
-  const { products, loading: loadingProducts, error: errorProducts, countProducts } = useProducts(); // Usa o hook de produtos
-  const { sales, loading: loadingSales, error: errorSales } = useSales(); // Usa o hook de vendas
-  const { clients, loading: loadingClients, error: errorClients } = useClients(); // Usa o hook de clientes
+export default function Dashboard({ activeView, setActiveView }) {
+  const { products, loading: loadingProducts, error: errorProducts, countProducts } = useProducts();
+  const { sales, loading: loadingSales, error: errorSales } = useSales();
+  const { clients, loading: loadingClients, error: errorClients } = useClients();
 
   if (loadingProducts || loadingSales || loadingClients) return <div>Carregando...</div>;
   if (errorProducts || errorSales || errorClients) return <div>Erro ao buscar dados</div>;
 
-  const totalProducts = countProducts(); // Contagem de produtos
-  const totalSales = sales.length; // Contagem de vendas
-  const totalClients = clients.length; // Contagem de clientes
+  const totalProducts = countProducts();
+  const totalSales = sales.length;
+  const totalClients = clients.length;
 
   return (
     <section className="container-home">
@@ -25,7 +28,7 @@ export default function Dashboard() {
       <div className='report'>
         <h1 className='title-home'>Automec - Estética Automotiva</h1>
         <div>
-          <MdOutlineReportProblem className='icon'/>
+          <MdOutlineReportProblem className='icon' />
           <a href="">Reportar Problema</a>
         </div>
       </div>
@@ -33,15 +36,15 @@ export default function Dashboard() {
       <article className="home-head">
         <div className="monthly">
           <h3>Produtos Cadastrados</h3>
-          <p>{totalProducts}</p> {/* Exibe a contagem de produtos */}
+          <p>{totalProducts}</p>
         </div>
         <div className="annual">
           <h3>Vendas Realizadas</h3>
-          <p>{totalSales}</p> {/* Exibe a contagem de vendas */}
+          <p>{totalSales}</p>
         </div>
         <div className="clients">
           <h3>Clientes Cadastrados</h3>
-          <p>{totalClients}</p> {/* Exibe a contagem de clientes */}
+          <p>{totalClients}</p>
         </div>
         <div className="tasks">
           <h3>Ganhos do Mês</h3>
@@ -53,6 +56,19 @@ export default function Dashboard() {
         <div className="graphic-sales">
           <Sales />
         </div>
+      </article>
+
+      {/* Renderiza componentes com base na visualização ativa */}
+      <article className='view-create-cliente'>
+        {activeView === 'createClient' && <CreateClient setActiveView={setActiveView} />} {/* Corrigido para passar setActiveView */}
+      </article>
+
+      <article className='view-create-venda'>
+        {activeView === 'createSale' && <CreateSales setActiveView={setActiveView} />} {/* Corrigido para passar setActiveView */}
+      </article>
+
+      <article className='view-create-produto'>
+        {activeView === 'createProduct' && <CreateProduct setActiveView={setActiveView} />} {/* Corrigido para passar setActiveView */}
       </article>
     </section>
   );
