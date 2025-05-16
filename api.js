@@ -79,3 +79,20 @@ export const createSale = async (saleData) => {
     }
 };
 
+// Função para excluir um cliente
+export const deleteClient = async (clientId) => {
+    try {
+        await axios.delete(`${API_URL}/clientes/${clientId}`); // Ajuste a URL conforme necessário
+    } catch (error) {
+        handleError(error); // Lida com erros
+    }
+};
+
+// Função para excluir uma venda
+export const deleteSale = async (saleId) => {
+    try {
+        await axios.delete(`${API_URL}/vendas/${saleId}`); // Ajuste a URL conforme necessário
+    } catch (error) {
+        handleError(error); // Lida com erros
+    }
+};

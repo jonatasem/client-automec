@@ -6,23 +6,23 @@ const useClients = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchClients = async () => {
-      setLoading(true);
-      try {
-        const response = await getClients();
-        setClients(response); // Armazena os clientes no estado
-      } catch (err) {
-        setError(err); // Armazena o erro no estado
-      } finally {
-        setLoading(false); // Finaliza o carregamento
-      }
-    };
+  const fetchClients = async () => {
+    setLoading(true);
+    try {
+      const response = await getClients();
+      setClients(response); // Armazena os clientes no estado
+    } catch (err) {
+      setError(err); // Armazena o erro no estado
+    } finally {
+      setLoading(false); // Finaliza o carregamento
+    }
+  };
 
-    fetchClients();
+  useEffect(() => {
+    fetchClients(); // Busca os clientes ao montar o componente
   }, []);
 
-  return { clients, loading, error }; // Retorna os dados do hook
+  return { clients, loading, error, refetchClients: fetchClients };
 };
 
 export default useClients;

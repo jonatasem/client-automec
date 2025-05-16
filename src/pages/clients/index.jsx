@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useClients from '../../hooks/useClients';
+import { deleteClient } from '../../../api'
 import './index.scss';
 
 export default function Clients() {
-    const { clients, loading, error } = useClients();
+    const { clients, loading, error, refetchClients } = useClients(); // Supondo que useClients retorne refetchClients
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedClients, setSelectedClients] = useState(new Set());
+
+    useEffect(() => {
+        // Este useEffect pode ser usado se você quiser fazer algo sempre que a lista de clientes mudar
+    }, [clients]);
 
     if (loading) return <div className='loading'>Carregando...</div>;
     if (error) return <div className='error-loading'>Erro ao buscar clientes: {error.message}</div>;
@@ -23,6 +28,20 @@ export default function Clients() {
             updatedSelection.add(clientId);
         }
         setSelectedClients(updatedSelection);
+    };
+
+    const handleDeleteClients = async () => {
+        if (window.confirm("Você tem certeza que deseja excluir os clientes selecionados?")) {
+            try {
+                // Exclui os clientes selecionados
+                await Promise.all(Array.from(selectedClients).map(clientId => deleteClient(clientId)));
+                alert("Clientes excluídos com sucesso!");
+                setSelectedClients(new Set()); // Limpa a seleção
+                refetchClients(); // Refaz a chamada para buscar a lista atualizada de clientes
+            } catch (error) {
+                alert("Erro ao excluir clientes: " + error.message);
+            }
+        }
     };
 
     const exportToCSV = () => {
@@ -108,6 +127,9 @@ export default function Clients() {
                 </table>
             </div>
             <div className='clients-cvs'>
+                <button onClick={handleDeleteClients} className="delete-button" disabled={selectedClients.size === 0}>
+                    Excluir Clientes
+                </button>
                 <button onClick={exportToCSV} className="export-button" disabled={selectedClients.size === 0}>
                     Exportar em CSV
                 </button>
@@ -115,4 +137,3 @@ export default function Clients() {
         </section>
     );
 }
-

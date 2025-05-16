@@ -2,10 +2,11 @@ import QRCode from "qrcode";
 import { QrCode } from "lucide-react";
 import useSales from "../../hooks/useSales";
 import useClients from "../../hooks/useClients";
+import { deleteSale } from '../../../api'; // Importa a função de exclusão
 import './index.scss'; // Importando os estilos
 
 export default function Sales() {
-    const { sales, loading: salesLoading, error: salesError } = useSales(); // Usa o hook de vendas
+    const { sales, loading: salesLoading, error: salesError, refetchSales } = useSales(); // Usa o hook de vendas
     const { clients, loading: clientsLoading, error: clientsError } = useClients(); // Usa o hook de clientes
 
     if (salesLoading || clientsLoading) return <div className='loading'>Carregando...</div>; // Exibe uma mensagem de carregamento
@@ -44,6 +45,18 @@ export default function Sales() {
         }
     };
 
+    const handleDeleteSale = async (saleId) => {
+        if (window.confirm("Você tem certeza que deseja excluir esta venda?")) {
+            try {
+                await deleteSale(saleId); // Chama a função para excluir a venda
+                alert("Venda excluída com sucesso!");
+                refetchSales(); // Refaz a chamada para buscar a lista atualizada de vendas
+            } catch (error) {
+                alert("Erro ao excluir a venda: " + error.message);
+            }
+        }
+    };
+
     // Ordenar as vendas por data (mais recente primeiro)
     const sortedSales = sales.sort((a, b) => new Date(b.data_emissao) - new Date(a.data_emissao));
 
@@ -72,6 +85,9 @@ export default function Sales() {
                                 <td>
                                     <button className="btn-qr-code" onClick={() => downloadQRCode(sale)}>
                                         <QrCode />
+                                    </button>
+                                    <button className="btn-delete" onClick={() => handleDeleteSale(sale.id)}>
+                                        Excluir
                                     </button>
                                 </td>
                             </tr>

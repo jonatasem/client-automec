@@ -22,7 +22,9 @@ const useProducts = () => {
     fetchProducts();
   }, []);
 
-  return { products, loading, error }; // Retorna os dados do hook
+  const countProducts = () => products.length; // Método para contar produtos
+
+  return { products, loading, error, countProducts }; // Retorna os dados do hook
 };
 
 export default useProducts;
